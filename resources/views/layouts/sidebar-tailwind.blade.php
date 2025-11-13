@@ -1,5 +1,4 @@
-<aside class="bg-sidebar-gradient p-5 shadow h-full overflow-y-auto">
-    {{-- LOGO / HEADER KECIL --}}
+<aside class="sidebar w-full md:w-56 bg-sidebar-gradient p-5 shadow overflow-y-auto md:min-h-screen md:flex-shrink-0">
     <div class="flex items-center gap-3 mb-6 bg-white bg-opacity-60 rounded-lg p-3">
         <div class="w-14 h-14 rounded-md bg-white p-1 flex items-center justify-center text-brand-green font-bold text-lg">
             EN
@@ -10,7 +9,6 @@
         </div>
     </div>
 
-    {{-- MENU --}}
     <nav class="space-y-3">
         {{-- DASHBOARD --}}
         <a
@@ -21,7 +19,7 @@
             <svg class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zM13 21h8V11h-8v10zm0-18v6h8V3h-8z"/>
             </svg>
-            <span>Dashboard</span>
+            Dashboard
         </a>
 
         {{-- DATA RAPAT --}}
@@ -34,9 +32,9 @@
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Z" />
+                      d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
             </svg>
-            <span>Data Rapat</span>
+            Data Rapat
         </a>
 
         {{-- NOTULEN RAPAT --}}
@@ -46,12 +44,12 @@
                 {{ request()->routeIs('notulen.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                 class="w-5 h-5 text-brand-green">
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
-            <span>Notulen Rapat</span>
+            Notulen Rapat
         </a>
 
         {{-- DATA PENGGUNA --}}
@@ -78,7 +76,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
             </svg>
-            <span>Arsip Rapat</span>
+            Arsip Rapat
         </a>
 
         {{-- TENTANG KAMI --}}
@@ -93,11 +91,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
-            <span>Tentang Kami</span>
+            Tentang Kami
         </a>
     </nav>
 
-    {{-- LOGOUT --}}
     <a class="mt-8 inline-flex items-center gap-2 text-red-600 font-bold hover:text-red-700 transition" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -105,6 +102,6 @@
             <path stroke-linecap="round" stroke-linejoin="round"
                   d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
         </svg>
-        <span>Keluar</span>
+        Keluar
     </a>
 </aside>
