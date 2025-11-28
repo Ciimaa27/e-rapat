@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +44,58 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // ================================
+    //  HELPER CEK ROLE USER
+    // ================================
+
+    public function isAdmin(): bool
+    {
+        return strtolower($this->role) === 'admin';
+    }
+
+    public function isNotulis(): bool
+    {
+        return strtolower($this->role) === 'notulis';
+    }
+
+    public function isPimpinan(): bool
+    {
+        return strtolower($this->role) === 'pimpinan';
+    }
+
+    public function isPegawai(): bool
+    {
+        return strtolower($this->role) === 'pegawai';
+    }
+
+    // ================================
+    //  HITUNG USER PER ROLE (DIPAKAI DI DASHBOARD)
+    // ================================
+
+   public static function countByRole(string $role): int
+    {
+        return self::whereRaw('LOWER(role) = ?', [strtolower($role)])->count();
+    }
+
+    public static function countAdmin(): int
+    {
+        return self::countByRole('admin');
+    }
+
+    public static function countPegawai(): int
+    {
+        return self::countByRole('pegawai');
+    }
+
+    public static function countNotulis(): int
+    {
+        return self::countByRole('notulis');
+    }
+
+    public static function countPimpinan(): int
+    {
+        return self::countByRole('pimpinan');
     }
 }

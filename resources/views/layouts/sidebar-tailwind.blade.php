@@ -1,4 +1,4 @@
-<aside class="sidebar w-full md:w-56 bg-sidebar-gradient p-5 shadow overflow-y-auto md:min-h-screen md:flex-shrink-0">
+<div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-full">
     <div class="flex items-center gap-3 mb-6 bg-white bg-opacity-60 rounded-lg p-3">
         <div class="w-14 h-14 rounded-md bg-white p-1 flex items-center justify-center text-brand-green font-bold text-lg">
             EN
@@ -22,12 +22,11 @@
             Dashboard
         </a>
 
-        {{-- DATA RAPAT --}}
-        <a
-            href="{{ route('residents.index') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                   {{ request()->routeIs('residents.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
-        >
+        {{-- DATA RAPAT --}}     
+        <a href="{{ route('rapat.index') }}"
+    class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+           {{ request()->routeIs('rapat.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
+>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -66,7 +65,7 @@
 
         {{-- ARSIP RAPAT --}}
         <a
-            href="#"
+            href="{{ route('arsip.index') }}"
             class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
                    {{ request()->routeIs('arsip.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
         >
@@ -81,9 +80,9 @@
 
         {{-- TENTANG KAMI --}}
         <a
-            href="#"
+            href="{{ route('about') }}"
             class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                   {{ request()->routeIs('about.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
+                   {{ request()->routeIs('about') ? 'bg-white/40' : 'hover:bg-white/30' }}"
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -95,13 +94,54 @@
         </a>
     </nav>
 
-    <a class="mt-8 inline-flex items-center gap-2 text-red-600 font-bold hover:text-red-700 transition" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-             class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-        </svg>
-        Keluar
-    </a>
-</aside>
+    <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="mt-8">
+        @csrf
+        <button type="button" id="logoutButton"
+            class="inline-flex items-center gap-2 text-red-600 font-bold hover:text-red-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+            </svg>
+            Keluar
+        </button>
+    </form>
+
+    <!-- LOGOUT CONFIRMATION MODAL -->
+    <div id="logoutModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-80">
+            <h2 class="text-lg font-bold mb-4">Konfirmasi</h2>
+            <p class="mb-6">Yakin ingin keluar?</p>
+
+            <div class="flex justify-end gap-3">
+                <button id="cancelLogout" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition">Batal</button>
+
+                <button id="confirmLogout" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
+                    Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const logoutButton = document.getElementById('logoutButton');
+            const logoutModal  = document.getElementById('logoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
+
+            logoutButton?.addEventListener('click', function () {
+                logoutModal.classList.remove('hidden');
+            });
+
+            cancelLogout?.addEventListener('click', function () {
+                logoutModal.classList.add('hidden');
+            });
+
+            confirmLogout?.addEventListener('click', function () {
+                document.getElementById('logoutForm').submit();
+            });
+        })();
+    </script>
+</div>
