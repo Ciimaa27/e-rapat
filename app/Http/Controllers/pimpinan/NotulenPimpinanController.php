@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Pimpinan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notulen;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class NotulenPimpinanController extends Controller
 {
@@ -78,5 +80,21 @@ class NotulenPimpinanController extends Controller
         ->get();
 
     return response()->json($notulens);
+}
+public function download($id)
+{
+    $notulen = DB::table('notulens')->where('id', $id)->first();
+
+    if (!$notulen) {
+        return back()->with('error', 'Data tidak ditemukan.');
+    }
+
+    $pdf = Pdf::loadView('pages.pdf.notulen', [
+        'notulen' => $notulen
+    ])->setPaper('A4', 'portrait');
+
+    ob_clean(); // cegah PDF rusak
+
+    return $pdf->download('Notulen-'.$notulen->id.'.pdf');
 }
 }

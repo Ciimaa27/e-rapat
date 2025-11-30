@@ -137,7 +137,7 @@
 
                             {{-- Aksi (Download) --}}
                             <td class="px-4 md:px-6 py-3 align-top">
-                                <a href="{{ route('pimpinan.notulen.show', $row->id) }}"
+                                <a href="{{ route('notulis.arsip.download', $row->id) }}"
                                    class="text-blue-600 font-semibold hover:underline">
                                     Unduh
                                 </a>

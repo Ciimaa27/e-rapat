@@ -15,7 +15,7 @@ class NotulisNotulenController extends Controller
     public function index()
     {
         $notulens = Notulen::with('rapat')
-                    ->whereIn('status', ['Direview', 'Direvisi'])
+                    ->where('status', 'Direview')
                     ->get();
 
         return view('pages.notulis.notulen.notulen-rapat', compact('notulens'));
@@ -41,8 +41,16 @@ class NotulisNotulenController extends Controller
             'date'    => 'required|date',
             'jam'     => 'required',
             'content' => 'required',
+            'file'    => 'nullable|mimes:pdf|max:2048', // <--- VALIDASI FILE
         ]);
 
+        // SIMPAN FILE
+        $filePath = null;
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('notulens'); 
+        }
+
+        // SIMPAN DATA NOTULEN
         Notulen::create([
             'judul_rapat' => $request->title,
             'tanggal'     => $request->date,
@@ -50,6 +58,7 @@ class NotulisNotulenController extends Controller
             'topik'       => $request->content,
             'status'      => 'Direview',
             'notulis_id'  => auth()->id(),
+            'file'        => $filePath,  // <--- SIMPAN PATH
         ]);
 
         return redirect()->route('notulis.notulen.index')

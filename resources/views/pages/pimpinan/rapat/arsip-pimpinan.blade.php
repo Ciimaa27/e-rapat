@@ -141,7 +141,7 @@
                             </td>
 
                             <td class="px-4 md:px-6 py-3">
-                                <a href="{{ route('pimpinan.notulen.show', $row->id) }}"
+                                <a href="{{ route('pimpinan.notulen.download', $row->id) }}"
                                    class="text-blue-600 hover:underline font-semibold">
                                     Unduh
                                 </a>

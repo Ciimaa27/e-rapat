@@ -6,7 +6,8 @@
 <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
     <h2 class="text-2xl font-extrabold text-brand-green mb-6">Buat Notulen</h2>
 
-    <form action="{{ route('notulis.notulen.store') }}" method="POST">
+    <form action="{{ route('notulis.notulen.store') }}" 
+      method="POST" enctype="multipart/form-data">
         @csrf
 
         {{-- NOTULIS (HANYA DITAMPILKAN, DISABLE) --}}
@@ -81,6 +82,21 @@
                     class="w-full border rounded px-3 py-2"
                     placeholder="Tuliskan ringkasan rapat, keputusan, dan tindak lanjut di sini..."
                 ></textarea>
+            </div>
+        </div>
+
+        {{-- FILE NOTULEN (UPLOAD PDF) --}}
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 items-start">
+            <label class="font-semibold text-brand-green md:mt-2">
+                Upload File (PDF)
+            </label>
+            <div class="md:col-span-3">
+                <input
+                    type="file"
+                    name="file"
+                    accept="application/pdf"
+                    class="w-full border rounded px-3 py-2"
+                >
             </div>
         </div>
 

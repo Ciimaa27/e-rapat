@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Notulen;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class PegawaiArsipController extends Controller
 {
@@ -37,12 +39,19 @@ class PegawaiArsipController extends Controller
 
     public function download($id)
     {
-        $notulen = Notulen::findOrFail($id);
+        $notulen = DB::table('notulens')->where('id', $id)->first();
 
-        if (!$notulen->file || !Storage::exists($notulen->file)) {
-            return back()->with('error', 'File tidak ditemukan.');
+        if (! $notulen) {
+            return back()->with('error', 'Notulen tidak ditemukan.');
         }
 
-        return Storage::download($notulen->file);
+        // Generate PDF langsung
+        $pdf = Pdf::loadView('pages.pdf.notulen', [
+            'notulen' => $notulen,
+        ])->setPaper('A4', 'portrait');
+
+        ob_clean(); // cegah error file rusak
+
+        return $pdf->download('Notulen-'.$notulen->id.'.pdf');
     }
 }

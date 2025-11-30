@@ -171,6 +171,8 @@ Route::middleware(['auth', 'role:pimpinan'])
         // ARSIP
         Route::get('/arsip', [ArsipPimpinanController::class, 'index'])->name('arsip.index');
         Route::get('/arsip/search', [ArsipPimpinanController::class, 'search'])->name('arsip.search');
+        Route::get('/notulen/{id}/download', [NotulenPimpinanController::class, 'download'])->name('notulen.download');
+
     });
 
 
