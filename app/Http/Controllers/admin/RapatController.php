@@ -65,7 +65,7 @@ class RapatController extends Controller
             'tanggal'       => 'required|date',
             'jam'           => 'required',
             'ruangan'       => 'required|string|max:255',
-            'notulis_id'    => 'nullable|exists:users,id',
+            'notulis_id'    => 'required|exists:users,id',
             'prioritas'     => 'required|string',
             'status'        => 'required|string',
             'peserta_ids'   => 'array',

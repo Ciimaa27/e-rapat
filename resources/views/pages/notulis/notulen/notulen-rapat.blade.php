@@ -127,18 +127,11 @@
 
             {{-- BUTTONS --}}
             <div class="flex gap-2 w-full md:w-auto">
-
-                <a href="{{ route('notulis.notulen.create') }}"
-                   class="bg-brand-green text-white px-4 py-2 rounded font-semibold text-sm hover:bg-emerald-800 transition">
-                    + Buat Notulen
-                </a>
-
                 <a href="#"
                    class="border border-[rgba(47,107,68,0.2)] text-brand-green
                           px-4 py-2 rounded font-semibold text-sm hover:bg-gray-50 transition">
                     Filter
                 </a>
-
             </div>
         </div>
 
@@ -192,9 +185,9 @@
                                 </a>
 
                             {{-- Transkrip audio --}}
-                            <a href="{{ route('notulis.transkrip.create', ['notulen_id' => $notulen->id]) }}"
-                            class="text-emerald-700 font-semibold hover:underline">
-                                Transkrip Audio
+                            <a href="{{ route('notulis.transkrip.create', $notulen->rapat_id) }}"
+                                class="text-emerald-700 font-semibold hover:underline">
+                                    Transkrip Audio
                             </a>
                             </td>                   
                     @empty

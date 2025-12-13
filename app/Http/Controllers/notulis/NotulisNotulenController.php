@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notulen;
 use App\Models\User;
+use App\Models\Rapat;
 
 class NotulisNotulenController extends Controller
 {
@@ -24,45 +25,32 @@ class NotulisNotulenController extends Controller
     // ============================
     // FORM CREATE NOTULEN
     // ============================
-    public function create()
+    public function create(Rapat $rapat)
     {
-        $notulisList = User::where('role', 'notulis')->get();
 
-        return view('pages.notulis.notulen.create', compact('notulisList'));
+        return view('pages.notulis.notulen.create', compact('rapat'));
     }
 
     // ============================
     // SIMPAN NOTULEN
     // ============================
-    public function store(Request $request)
+    public function store(Request $request, Rapat $rapat)
     {
         $request->validate([
-            'title'   => 'required',
-            'date'    => 'required|date',
-            'jam'     => 'required',
             'content' => 'required',
-            'file'    => 'nullable|mimes:pdf|max:2048', // <--- VALIDASI FILE
         ]);
 
-        // SIMPAN FILE
-        $filePath = null;
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('notulens'); 
-        }
-
-        // SIMPAN DATA NOTULEN
         Notulen::create([
-            'judul_rapat' => $request->title,
-            'tanggal'     => $request->date,
-            'jam'         => $request->jam,
+            'rapat_id'    => $rapat->id,
+            'judul_rapat' => $rapat->judul_rapat,
+            'tanggal'     => $rapat->tanggal,
+            'jam'         => $rapat->jam,
             'topik'       => $request->content,
             'status'      => 'Direview',
             'notulis_id'  => auth()->id(),
-            'file'        => $filePath,  // <--- SIMPAN PATH
         ]);
 
-        return redirect()->route('notulis.notulen.index')
-                        ->with('success', 'Notulen berhasil diajukan!');
+        return redirect()->route('notulis.notulen.index');
     }
 
     // ============================

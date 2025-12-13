@@ -107,16 +107,20 @@ Route::middleware(['auth', 'role:notulis'])
 
         // NOTULEN
         Route::get('/notulen', [NotulisNotulenController::class, 'index'])->name('notulen.index');
-        Route::get('/notulen/buat', [NotulisNotulenController::class, 'create'])->name('notulen.create');
-        Route::post('/notulen', [NotulisNotulenController::class, 'store'])->name('notulen.store');
         Route::get('/notulen/{id}', [NotulisNotulenController::class, 'show'])->name('notulen.show');
 
         // AGENDA
         Route::get('/agenda', [AgendaRapatController::class, 'index'])->name('agenda.index');
         Route::get('/agenda/{id}', [AgendaRapatController::class, 'show'])->name('agenda.show');
 
+        Route::get('/notulen/buat/{rapat}', [NotulisNotulenController::class, 'create'])
+            ->name('notulen.create');
+
+        Route::post('/notulen/buat/{rapat}', [NotulisNotulenController::class, 'store'])
+            ->name('notulen.store');
+
       // TRANSKRIP
-        Route::get('/transkrip/buat', [TranskripController::class, 'create'])
+        Route::get('/transkrip/buat/{rapat}', [TranskripController::class, 'create'])
             ->name('transkrip.create');          // tampil halaman form
 
          Route::post('/transkrip', [TranskripController::class, 'store'])

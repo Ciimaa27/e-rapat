@@ -171,11 +171,15 @@
                                 </span>
                             </td>
 
-                            <td class="px-4 md:px-6 py-4">
-                               <a href="{{ route('notulis.agenda.show', $item->id) }}"
-                                    class="text-blue-600 font-semibold hover:underline">
-                                        Lihat Detail
-                                    </a>
+                            <td class="px-4 md:px-6 py-4 flex flex-col gap-1">
+                                <a href="{{ route('notulis.agenda.show', $item->id) }}"
+                                class="text-blue-600 font-semibold hover:underline">
+                                    Lihat Detail
+                                </a>
+                                <a href="{{ route('notulis.notulen.create', $item->id) }}"
+                                    class="text-green-600 font-semibold hover:underline">
+                                    Buat Notulen
+                                </a>
                             </td>
                         </tr>
                     @empty

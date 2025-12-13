@@ -9,26 +9,24 @@ class Notulen extends Model
 {
     use HasFactory;
 
-    protected $table = 'notulens';
-
     protected $fillable = [
         'rapat_id',
-        'notulis_id',
         'judul_rapat',
         'tanggal',
         'jam',
         'topik',
         'status',
+        'notulis_id',
         'file',
     ];
 
-    // Notulen milik satu rapat
+    // Relasi ke rapat
     public function rapat()
     {
-        return $this->belongsTo(Rapat::class, 'rapat_id');
+        return $this->belongsTo(Rapat::class);
     }
 
-    // Notulen ditulis oleh satu user (notulis)
+    // Relasi ke user (notulis)
     public function notulis()
     {
         return $this->belongsTo(User::class, 'notulis_id');
