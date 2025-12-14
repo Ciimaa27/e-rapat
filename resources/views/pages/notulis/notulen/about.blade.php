@@ -1,6 +1,6 @@
 @extends('layouts.app-tailwind')
 
-@section('title', 'Tentang Kami - E-Notulen')
+@section('title', 'Tentang kami - E-Notulen')
 
 @section('content')
     <div class="space-y-8">
@@ -34,10 +34,9 @@
             <div class="grid gap-6 md:grid-cols-3">
                 @foreach($team as $member)
                     <div class="bg-white border rounded-2xl shadow-sm px-6 py-8 flex flex-col items-center text-center">
-                        <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center mb-4">
-                            <span class="text-brand-green font-extrabold text-xl">
-                                {{ strtoupper(substr($member['name'], 0, 2)) }}
-                            </span>
+                        {{-- FOTO TIM --}}
+                        <div class="w-20 h-20 rounded-full overflow-hidden mb-4">
+                            <img src="{{ asset($member['photo']) }}" alt="{{ $member['name'] }}" class="w-full h-full object-cover">
                         </div>
 
                         <div class="font-semibold text-brand-green text-sm md:text-base">
