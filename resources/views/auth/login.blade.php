@@ -49,8 +49,7 @@
 
             <!-- LOGO -->
             <div class="text-center mb-6">
-                <img src="{{ asset('assets/img/logo-en.png') }}" class="w-24 mx-auto mb-4" alt="logo">
-                <h2 class="text-xl font-semibold text-brand-green">E-Notulen</h2>
+               <img src="{{ asset('foto/logo.png') }}" class="w-24 md:w-32 mx-auto mb-4" alt="logo">
             </div>
 
             {{-- ERROR MESSAGE --}}
