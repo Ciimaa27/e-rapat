@@ -1,6 +1,6 @@
 @extends('layouts.app-tailwind')
 
-@section('title', 'Jadwal Rapat - Notulis')
+@section('title', 'Agenda Rapat - Notulis')
 
 @push('styles')
 <style>
@@ -34,7 +34,7 @@
     <div class="p-5 mb-6">
         <div class="flex items-start justify-between">
             <div>
-                <h1 class="text-2xl font-extrabold text-brand-green">Jadwal Rapat</h1>
+                <h1 class="text-2xl font-extrabold text-brand-green">Agenda Rapat</h1>
                 <p class="text-sm text-muted mt-1">{{ now()->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</p>
             </div>
 

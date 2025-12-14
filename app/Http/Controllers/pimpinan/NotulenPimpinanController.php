@@ -35,7 +35,7 @@ class NotulenPimpinanController extends Controller
 
     /**
      * UPDATE STATUS NOTULEN (Direview, Revisi, Disetujui)
-     * Jika Disetujui → pindah ke arsip
+     * Jika Disetujui → pindah ke arsip Notulis secara otomatis
      */
     public function update(Request $request, $id)
     {
@@ -47,7 +47,14 @@ class NotulenPimpinanController extends Controller
         $notulen->status = $request->status;
         $notulen->save();
 
-        // STATUS LOGIC
+        // ===== LOGIKA OTOMATIS HIDUP/HILANG DI HALAMAN NOTULIS =====
+        // Tidak perlu ubah controller Notulis karena query mereka sudah filter status:
+        // - Notulen Notulis: where('status','Direview')
+        // - Arsip Notulis: where('status','Disetujui')
+        // Jadi setelah update status Disetujui, notulen otomatis hilang dari halaman Notulen
+        // dan muncul di Arsip.
+
+        // ===== REDIRECT DENGAN PESAN =====
         if ($request->status === 'Disetujui') {
             return redirect()
                 ->route('pimpinan.arsip.index') // route arsip pimpinan
@@ -64,37 +71,45 @@ class NotulenPimpinanController extends Controller
             ->route('pimpinan.notulen.index')
             ->with('success', 'Status notulen berhasil diperbarui.');
     }
+
+    /**
+     * SEARCH NOTULEN PIMPINAN (AJAX)
+     */
     public function search(Request $request)
-{
-    $keyword = $request->q;
+    {
+        $keyword = $request->q;
 
-    $notulens = Notulen::whereNotIn('status', ['Disetujui', 'revisi', 'Menunggu'])
-        ->where(function ($query) use ($keyword) {
-            $query->where('judul_rapat', 'like', "%{$keyword}%")
-                ->orWhere('tanggal', 'like', "%{$keyword}%")
-                ->orWhere('jam', 'like', "%{$keyword}%")
-                ->orWhere('topik', 'like', "%{$keyword}%")
-                ->orWhere('status', 'like', "%{$keyword}%");
-        })
-        ->orderBy('tanggal', 'desc')
-        ->get();
+        $notulens = Notulen::whereNotIn('status', ['Disetujui', 'revisi', 'Menunggu'])
+            ->where(function ($query) use ($keyword) {
+                $query->where('judul_rapat', 'like', "%{$keyword}%")
+                    ->orWhere('tanggal', 'like', "%{$keyword}%")
+                    ->orWhere('jam', 'like', "%{$keyword}%")
+                    ->orWhere('topik', 'like', "%{$keyword}%")
+                    ->orWhere('status', 'like', "%{$keyword}%");
+            })
+            ->orderBy('tanggal', 'desc')
+            ->get();
 
-    return response()->json($notulens);
-}
-public function download($id)
-{
-    $notulen = DB::table('notulens')->where('id', $id)->first();
-
-    if (!$notulen) {
-        return back()->with('error', 'Data tidak ditemukan.');
+        return response()->json($notulens);
     }
 
-    $pdf = Pdf::loadView('pages.pdf.notulen', [
-        'notulen' => $notulen
-    ])->setPaper('A4', 'portrait');
+    /**
+     * DOWNLOAD NOTULEN PIMPINAN
+     */
+    public function download($id)
+    {
+        $notulen = DB::table('notulens')->where('id', $id)->first();
 
-    ob_clean(); // cegah PDF rusak
+        if (!$notulen) {
+            return back()->with('error', 'Data tidak ditemukan.');
+        }
 
-    return $pdf->download('Notulen-'.$notulen->id.'.pdf');
-}
+        $pdf = Pdf::loadView('pages.pdf.notulen', [
+            'notulen' => $notulen
+        ])->setPaper('A4', 'portrait');
+
+        ob_clean(); // cegah PDF rusak
+
+        return $pdf->download('Notulen-'.$notulen->id.'.pdf');
+    }
 }

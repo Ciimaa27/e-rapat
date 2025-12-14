@@ -143,10 +143,6 @@
             data-filter="Ditunda">
         Ditunda
     </button>   
-    <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
-            data-filter="terbaru">
-        Terbaru
-    </button>
 </div>
 
 

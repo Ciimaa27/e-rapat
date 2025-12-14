@@ -41,14 +41,13 @@ class NotulisNotulenController extends Controller
         ]);
 
         Notulen::create([
-            'rapat_id'    => $rapat->id,
-            'judul_rapat' => $rapat->judul_rapat,
-            'tanggal'     => $rapat->tanggal,
-            'jam'         => $rapat->jam,
-            'topik'       => $request->content,
-            'status'      => 'Direview',
-            'notulis_id'  => auth()->id(),
-        ]);
+        'rapat_id'    => $rapat->id,
+        'judul_rapat' => $rapat->judul_rapat,
+        'tanggal'     => $rapat->tanggal,
+        'topik'       => $request->content,
+        'status'      => 'Direview', // menunggu persetujuan pimpinan
+        'notulis_id'  => auth()->id(),
+]);
 
         return redirect()->route('notulis.notulen.index');
     }
