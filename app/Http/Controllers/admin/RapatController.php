@@ -4,14 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Rapat;   
+use App\Models\Rapat;
 use App\Models\User;
 
 class RapatController extends Controller
 {
     /**
      * LIST RAPAT (ADMIN)
-     * Sudah siap untuk realtime search (AJAX)
      */
     public function index(Request $request)
     {
@@ -27,21 +26,48 @@ class RapatController extends Controller
         return view('pages.admin.rapat.index', compact('rapats', 'search'));
     }
 
-
     /**
-     * REALTIME SEARCH — return JSON
+     * REALTIME SEARCH — JSON
      */
     public function search(Request $request)
     {
         $keyword = $request->q;
 
         $rapats = Rapat::where('judul_rapat', 'like', "%{$keyword}%")
-                        ->orderBy('tanggal', 'desc')
-                        ->get();
+            ->orderBy('tanggal', 'desc')
+            ->get();
 
         return response()->json($rapats);
     }
 
+/**
+ * 🔥 FILTER RAPAT (ADMIN)
+ * Terbaru | Terjadwal | Menunggu | Ditunda
+ */
+public function filter(Request $request)
+{
+    $filter = strtolower($request->filter);
+
+    $query = Rapat::query();
+
+    // FILTER STATUS
+    if (in_array($filter, ['menunggu', 'terjadwal', 'ditunda'])) {
+        $query->where('status', ucfirst($filter));
+    }
+
+    // TERBARU = SORTING SAJA
+    if ($filter === 'terbaru') {
+        $query->orderBy('tanggal', 'desc')
+              ->orderBy('jam', 'desc');
+    } else {
+        // default biar konsisten
+        $query->orderBy('tanggal', 'desc');
+    }
+
+    return response()->json(
+        $query->get()
+    );
+}
 
     /**
      * CREATE RAPAT
@@ -54,12 +80,11 @@ class RapatController extends Controller
         return view('pages.admin.rapat.create', compact('notulisList', 'pegawaiList'));
     }
 
-    /**             
+    /**
      * STORE RAPAT
-     */                                         
+     */
     public function store(Request $request)
     {
-        // Validasi input
         $validated = $request->validate([
             'judul_rapat'   => 'required|string|max:255',
             'tanggal'       => 'required|date',
@@ -72,7 +97,6 @@ class RapatController extends Controller
             'peserta_ids.*' => 'exists:users,id',
         ]);
 
-        // Isi otomatis oleh user yang login
         $validated['dibuat_oleh'] = auth()->id();
 
         if (!$validated['dibuat_oleh']) {
@@ -80,14 +104,11 @@ class RapatController extends Controller
                 ->withErrors('Session habis, silakan login ulang');
         }
 
-        // pisahkan peserta dari field lain
         $pesertaIds = $validated['peserta_ids'] ?? [];
         unset($validated['peserta_ids']);
 
-        // ⬅️ SIMPAN RAPAT KE VARIABEL
         $rapat = Rapat::create($validated);
 
-        // simpan peserta ke pivot
         if (!empty($pesertaIds)) {
             $rapat->peserta()->sync($pesertaIds);
         }
@@ -97,15 +118,13 @@ class RapatController extends Controller
             ->with('success', 'Rapat berhasil dibuat.');
     }
 
-
     /**
      * DETAIL RAPAT
      */
-   public function show($id)
+    public function show($id)
     {
         $rapat = Rapat::with(['peserta', 'notulis'])->findOrFail($id);
 
         return view('pages.admin.rapat.show', compact('rapat'));
     }
-
 }

@@ -110,13 +110,47 @@
                     + Buat Rapat
                 </a>
 
-                <button class="px-4 py-2 bg-pink-custom text-brand-green font-semibold rounded-lg text-sm
-                               hover-pink-custom-hover transition whitespace-nowrap flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 w-4 h-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                    </svg>
-                    <span>Filter</span>
-                </button>
+                <div class="flex gap-2 relative">
+
+    <!-- BUTTON FILTER -->
+    <button id="filterBtn"
+        class="px-4 py-2 bg-pink-custom text-brand-green font-semibold rounded-lg text-sm
+               hover-pink-custom-hover transition whitespace-nowrap flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24" stroke-width="1.5"
+             stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5
+                     m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5
+                     m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0
+                     m-9.75 0h9.75" />
+        </svg>
+        <span>Filter</span>
+    </button>
+
+<!-- DROPDOWN FILTER -->
+<div id="filterDropdown"
+     class="absolute right-0 top-11 bg-white border rounded-lg shadow-md w-44 hidden z-30">
+    <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+            data-filter="Menunggu">
+        Menunggu
+    </button>
+    <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+            data-filter="Terjadwal">
+        Terjadwal
+    </button>
+    <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+            data-filter="Ditunda">
+        Ditunda
+    </button>   
+    <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+            data-filter="terbaru">
+        Terbaru
+    </button>
+</div>
+
+
+</div>
             </div>
         </div>
 
@@ -233,11 +267,72 @@
         });
     }
 
+    const filterBtn      = document.getElementById('filterBtn');
+const filterDropdown = document.getElementById('filterDropdown');
+const tableBody      = document.getElementById('rapatTableBody');
+
+/* ==========================
+   TOGGLE DROPDOWN
+========================== */
+filterBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    filterDropdown.classList.toggle('hidden');
+});
+
+document.addEventListener('click', function () {
+    filterDropdown.classList.add('hidden');
+});
+
+/* ==========================
+   FILTER BY STATUS
+========================== */
+document.querySelectorAll('.filter-item').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const filter = this.dataset.filter;
+
+        fetch(`/rapat/filter?filter=${filter}`)
+            .then(res => res.json())
+            .then(data => {
+                let rows = '';
+
+                if (data.length === 0) {
+                    rows = `
+                        <tr>
+                            <td colspan="7" class="text-center text-gray-500 py-4">
+                                Tidak ada rapat.
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    data.forEach(r => {
+                        rows += `
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 md:px-6 py-4">${r.judul_rapat}</td>
+                                <td class="px-4 md:px-6 py-4">${r.tanggal}</td>
+                                <td class="px-4 md:px-6 py-4">${r.jam ?? '-'}</td>
+                                <td class="px-4 md:px-6 py-4 hidden sm:table-cell">${r.ruangan ?? '-'}</td>
+                                <td class="px-4 md:px-6 py-4 hidden lg:table-cell">${r.prioritas}</td>
+                                <td class="px-4 md:px-6 py-4">${r.status}</td>
+                                <td class="px-4 md:px-6 py-4">
+                                    <a href="/rapat/${r.id}" class="text-blue-600 hover:underline">
+                                        Lihat Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                tableBody.innerHTML = rows;
+                filterDropdown.classList.add('hidden');
+            });
+    });
+});
+
 // ==========================
 // REALTIME SEARCH RAPAT
 // ==========================
 const searchInput = document.getElementById('searchRapat');
-const tableBody   = document.getElementById('rapatTableBody');
 
 searchInput.addEventListener('keyup', function () {
     let q = this.value;
