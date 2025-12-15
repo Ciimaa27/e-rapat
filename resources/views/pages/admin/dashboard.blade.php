@@ -95,61 +95,63 @@
     {{-- ======================= --}}
     {{--   CONTENT DASHBOARD     --}}
     {{-- ======================= --}}
+{{-- STATISTIK KARTU --}}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
 
-    {{-- STATISTIK KARTU --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-        {{-- Card Admin --}}
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Admin</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $count_admin }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM4 20v-1a7 7 0 0114 0v1H4z"/>
-                </svg>
-            </div>
+    {{-- Admin --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Admin</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $count_admin }}</div>
         </div>
-
-        {{-- Card Pegawai --}}
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Pegawai</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $count_pegawai }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4zM16 13c0-.29.02-.578.058-.861C16.776 14.01 20 15.228 20 17v2h4v-2c0-2.667-5.333-4-8-4z"/>
-                </svg>
-            </div>
-        </div>
-
-        {{-- Card Notulis --}}
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Notulis</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $count_notulis }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2v10l3-2 3 2V2H12zM3 12h6v10H3z"/>
-                </svg>
-            </div>
-        </div>
-
-        {{-- Card Pimpinan --}}
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Pimpinan</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $count_pimpinan }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zM4 20v-1c0-2.21 3.582-4 8-4s8 1.79 8 4v1H4z"/>
-                </svg>
-            </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM4 20v-1a7 7 0 0114 0v1H4z"/>
+            </svg>
         </div>
     </div>
+
+    {{-- Pegawai --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Pegawai</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $count_pegawai }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM4 20v-1a7 7 0 0114 0v1H4z"/>
+            </svg>
+        </div>
+    </div>
+
+    {{-- Notulis --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Notulis</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $count_notulis }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM4 20v-1a7 7 0 0114 0v1H4z"/>
+            </svg>
+        </div>
+    </div>
+
+    {{-- Pimpinan --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Pimpinan</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $count_pimpinan }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM4 20v-1a7 7 0 0114 0v1H4z"/>
+            </svg>
+        </div>
+    </div>
+
+</div>
+
 
     {{-- RAPAT HARI INI --}}
     <h2 class="text-lg font-bold text-brand-green mt-3">Rapat Hari ini</h2>

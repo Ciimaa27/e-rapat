@@ -61,20 +61,19 @@
                         </div>
 
                         {{-- LOGOUT (POST + KONFIRMASI) --}}
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="mt-4">
+                        <form id="logout-form-profile" action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="button" id="logoutBtn"
-                                    class="w-full flex items-center justify-between text-sm text-brand-green px-2 py-2 rounded-lg hover:bg-gray-50">
+                            <button type="button" id="logoutBtnProfile"
+                                class="w-full flex items-center justify-between text-sm text-brand-green px-2 py-2 rounded-lg hover:bg-gray-50">
                                 Logout
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                     viewBox="0 0 24 24" stroke-width="1.5"
-                                     stroke="currentColor" class="w-5 h-5 text-red-500">
+                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-5 h-5 text-red-500">
                                     <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3" />
+                                        d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3" />
                                 </svg>
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -82,57 +81,66 @@
     </div>
 
     {{-- KARTU STATISTIK --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
 
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Rapat Mendatang</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $rapat_mendatang }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/>
-                </svg>
-            </div>
+    {{-- RAPAT MENDATANG --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Rapat Mendatang</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $rapat_mendatang }}</div>
         </div>
-
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Rapat Selesai</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $agenda_rapat }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12a3 3 0 100-6 3 3 0 000 6zM4 20v-1a7 7 0 0114 0v1H4z"/>
-                </svg>
-            </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            {{-- ICON KALENDER --}}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V9h14v11z"/>
+            </svg>
         </div>
-
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Notulen Disetujui</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $notulen_arsip }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2v10l3-2 3 2V2H12z"/>
-                </svg>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
-            <div>
-                <div class="text-xs text-muted font-semibold">Revisi Notulen</div>
-                <div class="text-2xl font-extrabold text-brand-green">{{ $notulen_review }}</div>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12a5 5 0 100-10 5 5 0 000 10z"/>
-                </svg>
-            </div>
-        </div>
-
     </div>
+
+    {{-- RAPAT SELESAI --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Rapat Selesai</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $agenda_rapat }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            {{-- ICON CHECK --}}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+        </div>
+    </div>
+
+    {{-- NOTULEN DISETUJUI --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Notulen Disetujui</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $notulen_arsip }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            {{-- ICON CHECK CIRCLE --}}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/>
+            </svg>
+        </div>
+    </div>
+
+    {{-- REVISI NOTULEN --}}
+    <div class="bg-white rounded-lg p-4 shadow flex items-center justify-between border">
+        <div>
+            <div class="text-xs text-muted font-semibold">Revisi Notulen</div>
+            <div class="text-2xl font-extrabold text-brand-green">{{ $notulen_review }}</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            {{-- ICON EDIT --}}
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+            </svg>
+        </div>
+    </div>
+
+</div>
+
 
     {{-- RAPAT HARI INI --}}
     <div class="mt-6">
@@ -205,36 +213,57 @@
 
 @endsection
 
+{{-- LOGOUT CONFIRMATION MODAL --}}
+<div id="logoutModalProfile" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-60">
+    <div class="bg-white p-6 rounded-lg shadow-xl w-80">
+        <h2 class="text-lg font-bold mb-4">Konfirmasi</h2>
+        <p class="mb-6">Yakin ingin keluar?</p>
+
+        <div class="flex justify-end gap-3">
+            <button id="cancelLogoutProfile" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition">Batal</button>
+
+            <button id="confirmLogoutProfile" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
+                Keluar
+            </button>
+        </div>
+    </div>
+</div>
+
 @push('scripts')
 <script>
-    const profileBtn = document.getElementById('profileBtn');
-    const profileDropdown = document.getElementById('profileDropdown');
+    // KONFIRMASI LOGOUT (FIXED)
+    const logoutBtnProfile  = document.getElementById('logoutBtnProfile');
+    const logoutFormProfile = document.getElementById('logout-form-profile');
+    const logoutModalProfile = document.getElementById('logoutModalProfile');
+    const cancelLogoutProfile = document.getElementById('cancelLogoutProfile');
+    const confirmLogoutProfile = document.getElementById('confirmLogoutProfile');
 
-    // Toggle show / hide dropdown profil
-    if (profileBtn && profileDropdown) {
-        profileBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // supaya klik tombol nggak langsung ketutup oleh listener document
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Klik di luar dropdown → tutup
-        document.addEventListener('click', function (e) {
-            if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
+    if (logoutBtnProfile && logoutModalProfile) {
+        logoutBtnProfile.addEventListener('click', function () {
+            logoutModalProfile.classList.remove('hidden');
         });
     }
 
-    // KONFIRMASI LOGOUT
-    const logoutBtn  = document.getElementById('logoutBtn');
-    const logoutForm = document.getElementById('logout-form');
+    if (cancelLogoutProfile && logoutModalProfile) {
+        cancelLogoutProfile.addEventListener('click', function () {
+            logoutModalProfile.classList.add('hidden');
+        });
+    }
 
-    if (logoutBtn && logoutForm) {
-        logoutBtn.addEventListener('click', function () {
-            if (confirm('Yakin ingin keluar dari aplikasi?')) {
-                logoutForm.submit();
+    if (confirmLogoutProfile && logoutFormProfile && logoutModalProfile) {
+        confirmLogoutProfile.addEventListener('click', function () {
+            logoutFormProfile.submit();
+        });
+    }
+
+    // Klik di luar modal untuk tutup
+    if (logoutModalProfile) {
+        logoutModalProfile.addEventListener('click', function (e) {
+            if (e.target === logoutModalProfile) {
+                logoutModalProfile.classList.add('hidden');
             }
         });
     }
 </script>
 @endpush
+

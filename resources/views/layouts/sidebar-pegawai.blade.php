@@ -31,10 +31,10 @@
                {{ request()->routeIs('pegawai.jadwal.*') ? 'bg-white/40' : 'hover:bg-white/50' }}">
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-5 h-5 text-brand-green">
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.25 13.5V7.491a2.25 2.25 0 012.25-2.25h13.5a2.25 2.25 0 012.25 2.25v11.25M3 16.5h18m-12-6h4.5" />
+                      d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
             </svg>
             Jadwal Rapat
         </a>
@@ -62,12 +62,15 @@
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 9v2.25m0 3h.008v.008H12v-.008zm0-9a9 9 0 100 18 9 9 0 000-18z" />
+                      d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
             Tentang Kami
         </a>
 
     </nav>
+
+    {{-- PEMBATAS --}}
+    <hr class="my-4 border-t border-gray-200">
 
     {{-- LOGOUT --}}
     <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="mt-8">

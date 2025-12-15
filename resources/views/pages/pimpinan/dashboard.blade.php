@@ -80,30 +80,36 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
     {{-- CARD 1 - Rapat bulan ini --}}
-    <div class="bg-white border rounded-lg shadow p-4 flex justify-between items-center">
+    <div class="bg-white border rounded-lg shadow p-4 flex items-center justify-between">
         <div>
             <p class="text-sm font-semibold text-gray-600">Rapat bulan ini</p>
             <p class="text-3xl mt-1 font-extrabold text-brand-green">{{ $rapat_bulan_ini }}</p>
         </div>
-        <i class="fa-solid fa-clipboard-list text-3xl text-gray-400"></i>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <i class="fa-solid fa-calendar-days text-sm"></i>
+        </div>
     </div>
 
-    {{-- CARD 2 - Meminta Persetujuan --}}
-    <div class="bg-white border rounded-lg shadow p-4 flex justify-between items-center">
+    {{-- CARD 2 - Menunggu Persetujuan --}}
+    <div class="bg-white border rounded-lg shadow p-4 flex items-center justify-between">
         <div>
-            <p class="text-sm font-semibold text-gray-600">Meminta Persetujuan rapat</p>
+            <p class="text-sm font-semibold text-gray-600">Menunggu Persetujuan Rapat</p>
             <p class="text-3xl mt-1 font-extrabold text-brand-green">{{ $rapat_menunggu }}</p>
         </div>
-        <i class="fa-solid fa-user-check text-3xl text-gray-400"></i>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <i class="fa-solid fa-clock text-sm"></i>
+        </div>
     </div>
 
     {{-- CARD 3 - Review Notulen --}}
-    <div class="bg-white border rounded-lg shadow p-4 flex justify-between items-center">
+    <div class="bg-white border rounded-lg shadow p-4 flex items-center justify-between">
         <div>
             <p class="text-sm font-semibold text-gray-600">Review Notulen</p>
             <p class="text-3xl mt-1 font-extrabold text-brand-green">{{ $notulen_review }}</p>
         </div>
-        <i class="fa-solid fa-user text-3xl text-gray-400"></i>
+        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-brand-green">
+            <i class="fa-solid fa-file-pen text-sm"></i>
+        </div>
     </div>
 
 </div>

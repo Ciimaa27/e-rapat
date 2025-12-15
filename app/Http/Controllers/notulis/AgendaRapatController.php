@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\notulis;
+namespace App\Http\Controllers\Notulis;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rapat;
@@ -10,16 +10,11 @@ class AgendaRapatController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-
-        // Ambil semua rapat yang ditugaskan ke notulis yang sedang login
-        $rapats = Rapat::where('notulis_id', $user->id)
-    ->whereDoesntHave('notulen', function($query){
-        $query->where('status', 'Direview')->orWhere('status', 'Disetujui');
-    })
-    ->orderBy('tanggal', 'desc')
-    ->orderBy('jam', 'asc')
-    ->get();
+        $rapats = Rapat::where('notulis_id', Auth::id())
+            ->where('status', 'Direview')
+            ->orderBy('tanggal', 'asc')
+            ->orderBy('jam', 'asc')
+            ->get();
 
         return view('pages.notulis.notulen.index', compact('rapats'));
     }

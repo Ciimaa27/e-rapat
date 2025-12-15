@@ -94,6 +94,9 @@
         </a>
     </nav>
 
+    {{-- PEMBATAS --}}
+    <hr class="my-4 border-t border-gray-200">
+
     <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="mt-8">
         @csrf
         <button type="button" id="logoutButton"

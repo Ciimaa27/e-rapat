@@ -33,7 +33,7 @@
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M6.75 3v2.25m10.5-2.25V5.25M3.375 9h17.25M4.5 6.75h15a2.25 2.25 0 012.25 2.25v9.75A2.25 2.25 0 0119.5 21H4.5A2.25 2.25 0 012.25 18.75V9a2.25 2.25 0 012.25-2.25Z" />
+                      d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
             </svg>
             Agenda Rapat
         </a>
@@ -44,10 +44,10 @@
            {{ request()->routeIs('pimpinan.notulen.*') ? 'bg-white/40' : 'hover:bg-white/50' }}">
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                 class="w-5 h-5 text-brand-green">
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M19.5 14.25v-3.375a3.375 3.375 0 00-3.375-3.375H12.75A1.125 1.125 0 0111.625 6.375V3A3.375 3.375 0 008.25 3H5.625A1.125 1.125 0 004.5 4.125V19.875A1.125 1.125 0 005.625 21H18.375A1.125 1.125 0 0019.5 19.875V14.25Z" />
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
             Notulen Rapat
         </a>
@@ -61,7 +61,7 @@
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M3.375 7.5h17.25c.62 0 1.125-.5 1.125-1.125v-1.5c0-.62-.505-1.125-1.125-1.125H3.375c-.62 0-1.125.505-1.125 1.125v1.5c0 .62.505 1.125 1.125 1.125zm1.5 0l.63 10.63a2.25 2.25 0 002.25 2.12h8.49a2.25 2.25 0 002.25-2.12L19.125 7.5M12 12v6m0 0l-3-3m3 3l3-3" />
+                      d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
             </svg>
             Arsip Rapat
         </a>
@@ -75,12 +75,15 @@
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 8.25h.008v.008H12V8.25zm0 3v6m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
             Tentang Kami
         </a>
 
     </nav>
+
+    {{-- PEMBATAS --}}
+    <hr class="my-4 border-t border-gray-200">
 
     {{-- LOGOUT --}}
     <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="mt-8">

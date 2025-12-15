@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\notulis;
+namespace App\Http\Controllers\Notulis;
 
 use App\Http\Controllers\Controller;
 
