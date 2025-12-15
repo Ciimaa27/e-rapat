@@ -77,19 +77,8 @@
                     class="p-2 rounded hover:bg-gray-100 transition"
                     title="Profil"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         stroke-width="1.5"
-                         stroke="currentColor"
-                         class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975
-                                 m11.963 0a9 9 0 1 0-11.963 0
-                                 m11.963 0A8.966 8.966 0 0 1 12 21
-                                 a8.966 8.966 0 0 1-5.982-2.275
-                                 M15 9.75a3 3 0 1 1-6 0
-                                 3 3 0 0 1 6 0Z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                 </button>
 
@@ -100,20 +89,8 @@
                 >
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-brand-green">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke-width="1.5"
-                                 stroke="currentColor"
-                                 class="w-7 h-7">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75
-                                         a7.488 7.488 0 0 0-5.982 2.975
-                                         m11.963 0a9 9 0 1 0-11.963 0
-                                         m11.963 0A8.966 8.966 0 0 1 12 21
-                                         a8.966 8.966 0 0 1-5.982-2.275
-                                         M15 9.75a3 3 0 1 1-6 0
-                                         3 3 0 0 1 6 0Z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
                         </div>
 
@@ -141,18 +118,8 @@
                             class="w-full flex items-center justify-between text-sm text-brand-green px-2 py-2 rounded-lg hover:bg-gray-50"
                         >
                             Logout
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke-width="1.5"
-                                 stroke="currentColor"
-                                 class="w-5 h-5 text-red-500">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6
-                                         A2.25 2.25 0 0 0 5.25 5.25v13.5
-                                         A2.25 2.25 0 0 0 7.5 21h6
-                                         a2.25 2.25 0 0 0 2.25-2.25V15
-                                         M12 9l3 3m0 0l-3 3m3-3H3" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-red-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3" />
                             </svg>
                         </button>
                     </form>
@@ -164,54 +131,54 @@
 
 {{-- TABLE --}}
 <section class="bg-white rounded-lg p-4 shadow border">
-    <div class="border-2 border-gray-200 rounded-lg overflow-x-auto">
-        <table class="min-w-full text-sm table-divider">
+    <div class="border-2 border-gray-200 rounded-lg overflow-hidden overflow-x-auto">
+        <table role="table" aria-label="Daftar Rapat" class="min-w-full divide-y divide-gray-200 text-sm table-divider">
             <thead class="bg-pink-custom">
                 <tr>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green">Judul Rapat</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green">Tanggal</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green">Jam</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green hidden sm:table-cell">Ruangan</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green hidden lg:table-cell">Prioritas</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green">Status</th>
-                    <th class="px-6 py-3 text-left font-bold text-brand-green">Aksi</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green rounded-tl-lg">Judul Rapat</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">Tanggal</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">Jam</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green hidden sm:table-cell">Ruangan</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green hidden lg:table-cell">Prioritas</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">Status</th>
+                    <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green rounded-tr-lg">Aksi</th>
                 </tr>
             </thead>
 
             <tbody>
                 @forelse ($rapats as $item)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4 font-medium text-brand-green">
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap font-medium text-brand-green">
                             {{ $item->judul_rapat }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                             {{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('DD MMMM YYYY') }}
                         </td>
-                        <td class="px-6 py-4">{{ \Carbon\Carbon::createFromFormat('H:i:s', $item->jam)->format('H:i') }}</td>
-                        <td class="px-6 py-4 hidden sm:table-cell">{{ $item->ruangan }}</td>
-                        <td class="px-6 py-4 hidden lg:table-cell">
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::createFromFormat('H:i:s', $item->jam)->format('H:i') }}</td>
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap hidden sm:table-cell">{{ $item->ruangan }}</td>
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                             <span class="badge {{ 'pri-' . strtolower($item->prioritas) }}">
                                 {{ ucfirst($item->prioritas) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                             <span class="stat-{{ strtolower($item->status) }}">
                                 {{ ucfirst($item->status) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 flex flex-col gap-1">
-                            <a href="{{ route('notulis.agenda.show', $item->id) }}" class="text-blue-600 font-semibold hover:underline">
+                        <td class="px-4 md:px-6 py-4 whitespace-nowrap flex flex-col gap-1">
+                            <a href="{{ route('notulis.agenda.show', $item->id) }}" class="text-blue-600 font-semibold hover:underline transition">
                                 Lihat Detail
                             </a>
-                            <a href="{{ route('notulis.notulen.create', $item->id) }}" class="text-green-600 font-semibold hover:underline">
+                            <a href="{{ route('notulis.notulen.create', $item->id) }}" class="text-green-600 font-semibold hover:underline transition">
                                 Buat Notulen
                             </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-6 text-center text-gray-500">
-                            Belum ada data.
+                        <td colspan="7" class="px-4 md:px-6 py-6 text-center text-gray-500">
+                            Belum ada data rapat.
                         </td>
                     </tr>
                 @endforelse

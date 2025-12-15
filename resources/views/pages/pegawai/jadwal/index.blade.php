@@ -117,13 +117,8 @@
                                focus:outline-none focus:border-brand-green"
                     >
                     <span class="absolute left-3 top-2.5 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                             class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="m21 21-5.197-5.197m0 0A7.5 
-                                  7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 
-                                  10.607Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </span>
                 </div>
@@ -132,44 +127,74 @@
 
         {{-- TABLE --}}
         <div class="border-2 border-gray-200 rounded-lg overflow-hidden overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 text-sm table-divider">
+            <table role="table" aria-label="Daftar Rapat" class="min-w-full divide-y divide-gray-200 text-sm table-divider">
                 <thead class="bg-pink-custom">
                     <tr>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green">Judul Rapat</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green">Tanggal</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green">Jam</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green hidden sm:table-cell">Ruangan</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green hidden lg:table-cell">Prioritas</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green">Status</th>
-                        <th class="px-4 py-3 text-left text-sm font-bold text-brand-green">Aksi</th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green rounded-tl-lg">
+                            Judul Rapat
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">
+                            Tanggal
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">
+                            Jam
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green hidden sm:table-cell">
+                            Ruangan
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green hidden lg:table-cell">
+                            Prioritas
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green">
+                            Status
+                        </th>
+                        <th class="px-4 md:px-6 py-3 text-left text-sm font-bold text-brand-green rounded-tr-lg">
+                            Aksi
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody id="pegawaiTableBody" class="bg-white divide-y divide-gray-200">
                     @forelse($rapats as $rapat)
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="px-4 py-4 font-medium text-brand-green">{{ $rapat->judul_rapat }}</td>
-                            <td class="px-4 py-4 whitespace-nowrap">{{ $rapat->tanggal }}</td>
-                            <td class="px-4 py-4 whitespace-nowrap">{{ $rapat->jam }}</td>
-                            <td class="px-4 py-4 whitespace-nowrap hidden sm:table-cell">{{ $rapat->ruangan ?? '-' }}</td>
-                            <td class="px-4 py-4 whitespace-nowrap hidden lg:table-cell">
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap font-medium text-brand-green">
+                                {{ $rapat->judul_rapat }}
+                            </td>
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+                                {{ $rapat->tanggal }}
+                            </td>
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+                                {{ $rapat->jam }}
+                            </td>
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
+                                {{ $rapat->ruangan ?? '-' }}
+                            </td>
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                                 <span class="badge pri-{{ strtolower($rapat->prioritas) }}">
                                     {{ $rapat->prioritas }}
                                 </span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap">
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                                 <span class="stat-{{ strtolower($rapat->status) }}">
                                     {{ $rapat->status }}
                                 </span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap">
+
+                            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                                 <a href="/pegawai/jadwal/{{ $rapat->id }}"
-                                   class="text-blue-600 font-semibold hover:underline">Detail</a>
+                                   class="text-blue-600 font-semibold hover:underline transition">
+                                    Lihat Detail
+                                </a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="px-4 py-6 text-center text-gray-400">
+                            <td colspan="7" class="px-4 md:px-6 py-6 text-center text-gray-500">
                                 Belum ada agenda rapat.
                             </td>
                         </tr>

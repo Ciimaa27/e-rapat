@@ -189,48 +189,39 @@ Route::middleware(['auth', 'role:pegawai'])
     ->name('pegawai.')
     ->group(function () {
 
-        Route::get('/dashboard', [PegawaiController::class, 'dashboard'])->name('dashboard');
+        // DASHBOARD
+        Route::get('/dashboard', [PegawaiController::class, 'dashboard'])
+            ->name('dashboard');
 
-        // JADWAL RAPAT
-        Route::get('/jadwal', [PegawaiController::class, 'agendaIndex'])->name('jadwal.index');
+        // =====================
+        // JADWAL / AGENDA RAPAT
+        // =====================
+        Route::get('/jadwal', [PegawaiController::class, 'agendaIndex'])
+            ->name('jadwal.index');
 
-        // 🔥 SEARCH YANG BENAR
         Route::get('/jadwal/search', [PegawaiController::class, 'searchAgenda'])
             ->name('jadwal.search');
 
-        Route::get('/jadwal/{id}', [PegawaiController::class, 'agendaShow'])->name('jadwal.show');
+        Route::get('/jadwal/{id}', [PegawaiController::class, 'agendaShow'])
+            ->name('jadwal.show');
 
-        // ARSIP
-        Route::get('/arsip', [PegawaiArsipController::class, 'index'])->name('arsip.index');
-        Route::get('/arsip/search', [PegawaiArsipController::class, 'search'])->name('arsip.search');
-        Route::get('/arsip/{id}/download', [PegawaiArsipController::class, 'download'])->name('arsip.download');
-    });
+        // =====================
+        // ARSIP NOTULEN
+        // =====================
+        Route::get('/arsip', [PegawaiArsipController::class, 'index'])
+            ->name('arsip.index');
 
-    // =====================
-// ROUTE PEGAWAI
-// =====================
-Route::middleware(['auth', 'role:pegawai'])
-    ->prefix('pegawai')
-    ->name('pegawai.')
-    ->group(function () {
+        Route::get('/arsip/search', [PegawaiArsipController::class, 'search'])
+            ->name('arsip.search');
 
-        Route::get('/dashboard', [PegawaiController::class, 'dashboard'])->name('dashboard');
+        Route::get('/arsip/{id}/download', [PegawaiArsipController::class, 'download'])
+            ->name('arsip.download');
 
-        Route::get('/jadwal', [PegawaiController::class, 'agendaIndex'])->name('jadwal.index');
-
-        Route::get('/jadwal/search', [PegawaiController::class, 'searchAgenda'])->name('jadwal.search');
-
-        Route::get('/jadwal/{id}', [PegawaiController::class, 'agendaShow'])->name('jadwal.show');
-
-        Route::get('/arsip', [PegawaiArsipController::class, 'index'])->name('arsip.index');
-
-        Route::get('/arsip/search', [PegawaiArsipController::class, 'search'])->name('arsip.search');
-
-        Route::get('/arsip/{id}/download', [PegawaiArsipController::class, 'download'])->name('arsip.download');
-
-       Route::get('/pegawai/rapat/{id}/presensi', [PegawaiController::class, 'scanPresensi'])
-            ->middleware(['auth', 'role:pegawai'])
-            ->name('pegawai.presensi.scan');
+        // =====================
+        // PRESENSI RAPAT
+        // =====================
+        Route::get('/rapat/{id}/presensi', [PegawaiController::class, 'scanPresensi'])
+            ->name('presensi.scan');
     });
 
 
