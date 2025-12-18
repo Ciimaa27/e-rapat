@@ -30,7 +30,7 @@
     <div>
         <h1 class="text-2xl md:text-3xl font-extrabold text-brand-green">Akun Pengguna</h1>
         <p class="text-sm text-muted mt-1">
-            {{ now()->locale('id')->isoFormat('dddd, DD-MM-YYYY') }}
+            {{ now()->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}
         </p>
     </div>
 
