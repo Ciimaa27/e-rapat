@@ -131,6 +131,56 @@
 
 {{-- TABLE --}}
 <section class="bg-white rounded-lg p-4 shadow border">
+
+    {{-- SEARCH + FILTER --}}
+<div class="flex flex-col md:flex-row items-stretch md:items-center gap-4 mb-6">
+    <div class="flex-1">
+        <div class="relative">
+            <input
+                type="text"
+                id="searchRapat"
+                placeholder="Cari judul rapat..."
+                class="w-full pl-10 pr-4 py-2 bg-gray-50 border-2 border-gray-200 rounded-lg text-sm
+                       focus:outline-none focus:border-brand-green"
+            >
+            <span class="absolute left-3 top-2.5 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </span>
+        </div>
+    </div>
+
+    <div class="flex gap-2 relative">
+        <button id="filterBtn"
+            class="px-4 py-2 bg-pink-custom text-brand-green font-semibold rounded-lg text-sm
+                   hover-pink-custom-hover transition whitespace-nowrap flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5
+                         m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5
+                         m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0
+                         m-9.75 0h9.75" />
+            </svg>
+            <span>Filter</span>
+        </button>
+
+        {{-- DROPDOWN FILTER --}}
+        <div id="filterDropdown"
+             class="absolute right-0 top-11 bg-white border rounded-lg shadow-md w-44 hidden z-30">
+            <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+                    data-filter="Disetujui">
+                Disetujui
+            </button>
+            <button class="filter-item w-full text-left px-4 py-2 hover:bg-gray-100"
+                    data-filter="Draft">
+                Draft
+            </button>
+        </div>
+    </div>
+</div>
     <div class="border-2 border-gray-200 rounded-lg overflow-hidden overflow-x-auto">
         <table role="table" aria-label="Daftar Rapat" class="min-w-full divide-y divide-gray-200 text-sm table-divider">
             <thead class="bg-pink-custom">
