@@ -1,32 +1,28 @@
 <div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-full">
-    <div class="flex items-center gap-3 mb-6 bg-white bg-opacity-60 rounded-lg p-3">
-        <div class="w-14 h-14 rounded-md bg-white p-1 flex items-center justify-center text-brand-green font-bold text-lg">
-            EN
-        </div>
-        <div>
-            <div class="font-extrabold text-brand-green text-lg">E-Notulen</div>
-            <div class="text-sm font-semibold text-gray-600">Sistem Rapat</div>
-        </div>
+
+    <!-- LOGO DI ATAS -->
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('foto/logo.png') }}" 
+             alt="Logo E-Notulen" 
+             class="w-32 h-32 object-contain">
     </div>
 
+    <!-- NAVIGASI -->
     <nav class="space-y-3">
         {{-- DASHBOARD --}}
-        <a
-            href="{{ route('dashboard') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                   {{ request()->routeIs('dashboard') ? 'bg-white/40' : 'hover:bg-white/50' }}"
-        >
+        <a href="{{ route('dashboard') }}"
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('dashboard') ? 'bg-white/40' : 'hover:bg-white/50' }}">
             <svg class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zM13 21h8V11h-8v10zm0-18v6h8V3h-8z"/>
             </svg>
             Dashboard
         </a>
 
-        {{-- DATA RAPAT --}}     
+        {{-- DATA RAPAT --}}
         <a href="{{ route('rapat.index') }}"
-    class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-           {{ request()->routeIs('rapat.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
->
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('rapat.*') ? 'bg-white/40' : 'hover:bg-white/30' }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -37,26 +33,22 @@
         </a>
 
         {{-- NOTULEN RAPAT --}}
-        <a
-            href="{{ route('notulen.index') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                {{ request()->routeIs('notulen.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
-        >
+        <a href="{{ route('notulen.index') }}"
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('notulen.*') ? 'bg-white/40' : 'hover:bg-white/30' }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-5 h-5 text-brand-green">
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
             Notulen Rapat
         </a>
 
         {{-- DATA PENGGUNA --}}
-        <a
-            href="{{ route('users.index') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                {{ request()->routeIs('users.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
-        >
+        <a href="{{ route('users.index') }}"
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('users.*') ? 'bg-white/40' : 'hover:bg-white/30' }}">
             <svg class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4zM16 13c0-.29.02-.578.058-.861C16.776 14.01 20 15.228 20 17v2h4v-2c0-2.667-5.333-4-8-4z"/>
             </svg>
@@ -64,11 +56,9 @@
         </a>
 
         {{-- ARSIP RAPAT --}}
-        <a
-            href="{{ route('arsip.index') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                   {{ request()->routeIs('arsip.*') ? 'bg-white/40' : 'hover:bg-white/30' }}"
-        >
+        <a href="{{ route('arsip.index') }}"
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('arsip.*') ? 'bg-white/40' : 'hover:bg-white/30' }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -79,11 +69,9 @@
         </a>
 
         {{-- TENTANG KAMI --}}
-        <a
-            href="{{ route('about') }}"
-            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
-                   {{ request()->routeIs('about') ? 'bg-white/40' : 'hover:bg-white/30' }}"
-        >
+        <a href="{{ route('about') }}"
+           class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
+                  {{ request()->routeIs('about') ? 'bg-white/40' : 'hover:bg-white/30' }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -94,9 +82,10 @@
         </a>
     </nav>
 
-    {{-- PEMBATAS --}}
+    <!-- PEMBATAS -->
     <hr class="my-4 border-t border-gray-200">
 
+    <!-- LOGOUT -->
     <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="mt-8">
         @csrf
         <button type="button" id="logoutButton"
@@ -111,15 +100,13 @@
         </button>
     </form>
 
-    <!-- LOGOUT CONFIRMATION MODAL -->
+    <!-- LOGOUT MODAL -->
     <div id="logoutModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg shadow-xl w-80">
             <h2 class="text-lg font-bold mb-4">Konfirmasi</h2>
             <p class="mb-6">Yakin ingin keluar?</p>
-
             <div class="flex justify-end gap-3">
                 <button id="cancelLogout" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition">Batal</button>
-
                 <button id="confirmLogout" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
                     Keluar
                 </button>

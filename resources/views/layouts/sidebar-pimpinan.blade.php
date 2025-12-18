@@ -1,14 +1,10 @@
 <div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-screen rounded-r-2xl">
 
-    {{-- LOGO --}}
-    <div class="flex items-center gap-3 mb-6 bg-white bg-opacity-60 rounded-lg p-3">
-        <div class="w-14 h-14 rounded-md bg-white p-1 flex items-center justify-center text-brand-green font-bold text-lg">
-            EN
-        </div>
-        <div>
-            <div class="font-extrabold text-brand-green text-lg">E-Notulen</div>
-            <div class="text-sm font-semibold text-gray-600">Sistem Rapat</div>
-        </div>
+    {{-- LOGO BESAR DI ATAS --}}
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('foto/logo.png') }}" 
+             alt="Logo E-Notulen" 
+             class="w-32 h-32 object-contain">
     </div>
 
     <nav class="space-y-3">
@@ -17,7 +13,6 @@
         <a href="{{ route('dashboard') }}"
            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
            {{ request()->routeIs('dashboard') ? 'bg-white/40' : 'hover:bg-white/50' }}">
-
             <svg class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zM13 21h8V11h-8v10zm0-18v6h8V3h-8z"/>
             </svg>
@@ -28,7 +23,6 @@
         <a href="{{ route('pimpinan.rapat.index') }}"
            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
            {{ request()->routeIs('pimpinan.rapat.*') ? 'bg-white/40' : 'hover:bg-white/50' }}">
-
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -42,12 +36,11 @@
         <a href="{{ route('pimpinan.notulen.index') }}"
            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
            {{ request()->routeIs('pimpinan.notulen.*') ? 'bg-white/40' : 'hover:bg-white/50' }}">
-
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-5 h-5 text-brand-green">
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-5 h-5 text-brand-green">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
             Notulen Rapat
         </a>
@@ -56,7 +49,6 @@
         <a href="{{ route('pimpinan.arsip.index') }}"
            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
            {{ request()->routeIs('pimpinan.arsip.*') ? 'bg-white/40' : 'hover:bg-white/50' }}">
-
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -70,7 +62,6 @@
         <a href="{{ route('about') }}"
            class="flex items-center gap-3 px-3 py-2 rounded-md font-semibold transition
            {{ request()->routeIs('about') ? 'bg-white/40' : 'hover:bg-white/50' }}">
-
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  class="w-5 h-5 text-brand-green">
@@ -101,7 +92,6 @@
     </form>
 </div>
 
-
 {{-- POPUP LOGOUT --}}
 <div id="logoutModal"
      class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -122,7 +112,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     (function () {

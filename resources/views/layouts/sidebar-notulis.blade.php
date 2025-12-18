@@ -1,14 +1,10 @@
-<div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-full rounded-r-2xl">
+<div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-screen rounded-r-2xl">
 
-    {{-- LOGO --}}
-    <div class="flex items-center gap-3 mb-6 bg-white bg-opacity-60 rounded-lg p-3">
-        <div class="w-14 h-14 rounded-md bg-white p-1 flex items-center justify-center text-brand-green font-bold text-lg">
-            EN
-        </div>
-        <div>
-            <div class="font-extrabold text-brand-green text-lg">E-Notulen</div>
-            <div class="text-sm font-semibold text-gray-600">Sistem Rapat</div>
-        </div>
+    {{-- LOGO BESAR DI ATAS --}}
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('foto/logo.png') }}" 
+             alt="Logo E-Notulen" 
+             class="w-32 h-32 object-contain">
     </div>
 
     {{-- MENU --}}
