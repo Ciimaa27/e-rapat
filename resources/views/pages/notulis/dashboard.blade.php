@@ -20,7 +20,7 @@
         <div class="flex items-start justify-between">
             <div>
                 <h1 class="text-2xl font-extrabold text-brand-green">Selamat Datang, Notulis</h1>
-                <p class="text-sm text-muted mt-1">{{ now()->locale('id')->isoFormat('dddd, DD-MM-YYYY') }}</p>
+                <p class="text-sm text-muted mt-1">{{ now()->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</p>
             </div>
 
             <div class="flex items-center gap-3">

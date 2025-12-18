@@ -12,7 +12,7 @@
                 Selamat Datang, Pimpinan
             </h1>
             <p class="text-sm text-muted mt-1">
-                {{ now()->locale('id')->isoFormat('dddd, DD-MM-YYYY') }}
+                {{ now()->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}
             </p>
         </div>
 
