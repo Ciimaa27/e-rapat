@@ -1,4 +1,4 @@
-<div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-screen rounded-r-2xl">
+<div class="w-full bg-sidebar-gradient p-5 shadow overflow-y-auto h-screen">
 
     {{-- LOGO BESAR DI ATAS --}}
     <div class="flex justify-center mb-6">
