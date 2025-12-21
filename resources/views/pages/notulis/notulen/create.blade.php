@@ -8,7 +8,9 @@
         Buat Notulen
     </h2>
 
+    {{-- FORM --}}
     <form
+        id="form-notulen"
         action="{{ route('notulis.notulen.store', $rapat->id) }}"
         method="POST"
         enctype="multipart/form-data"
@@ -107,23 +109,25 @@
                 <input type="hidden" name="status" value="Direview">
             </div>
         </div>
-
-        {{-- ACTION --}}
-        <div class="flex justify-end gap-3">
-            <a
-                href="{{ route('notulis.notulen.index') }}"
-                class="px-4 py-2 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition"
-            >
-                Batal
-            </a>
-
-            <button
-                type="submit"
-                class="px-4 py-2 rounded bg-brand-green text-white font-semibold hover:bg-emerald-800 transition"
-            >
-                ✓ Ajukan
-            </button>
-        </div>
     </form>
+
+    {{-- ACTION --}}
+    <div class="flex justify-end gap-3">
+        <a
+            href="{{ route('notulis.agenda.index') }}"
+            class="px-4 py-2 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition"
+        >
+            Batal
+        </a>
+
+
+        <button
+            type="submit"
+            form="form-notulen"
+            class="px-4 py-2 rounded bg-brand-green text-white font-semibold hover:bg-emerald-800 transition"
+        >
+            ✓ Ajukan
+        </button>
+    </div>
 </div>
 @endsection

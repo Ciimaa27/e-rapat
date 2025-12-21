@@ -31,20 +31,19 @@ class AgendaPimpinanController extends Controller
      * (Menunggu, Ditunda, Disetujui)
      */
     public function updateStatus(Request $request, $id)
-    {
-        $request->validate([
-            'status' => 'required|in:Menunggu,Ditunda,Disetujui',
-        ]);
+{
+    $request->validate([
+        'status' => 'required|in:Menunggu,Terjadwal,Ditunda',
+    ]);
 
-        $rapat = Rapat::findOrFail($id);
-        $rapat->status = $request->status;
-        $rapat->save();
+    $rapat = Rapat::findOrFail($id);
+    $rapat->status = $request->status;
+    $rapat->save();
 
-        return redirect()
-            ->route('pimpinan.rapat.index')
-            ->with('success', 'Status rapat berhasil diperbarui.');
-    }
-
+    return redirect()
+        ->route('pimpinan.rapat.index')
+        ->with('success', 'Status rapat berhasil diperbarui.');
+}
     /**
      * 🔥 REALTIME SEARCH — Return JSON
      */

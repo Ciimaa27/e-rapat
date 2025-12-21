@@ -97,12 +97,12 @@
             @csrf
             @method('PUT')
 
-            <select name="status"
-                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-600 focus:border-emerald-600">
-                <option value="Menunggu"  {{ $rapat->status == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
-                <option value="Ditunda"   {{ $rapat->status == 'Ditunda' ? 'selected' : '' }}>Ditunda</option>
-                <option value="Disetujui" {{ $rapat->status == 'Disetujui' ? 'selected' : '' }}>Disetujui</option>
+            <select name="status" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                <option value="Menunggu"   {{ $rapat->status == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+                <option value="Terjadwal"  {{ $rapat->status == 'Terjadwal' ? 'selected' : '' }}>Terjadwal</option>
+                <option value="Ditunda"    {{ $rapat->status == 'Ditunda' ? 'selected' : '' }}>Ditunda</option>
             </select>
+
 
             <button type="submit"
                     class="px-3 py-2 text-xs md:text-sm bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">

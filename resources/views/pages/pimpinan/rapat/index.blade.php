@@ -22,9 +22,6 @@
     .badge { display:inline-block; padding:.25rem .5rem; border-radius:.5rem; font-weight:600; }
     .pri-tinggi { background:#fde68a; color:#b45309; }
     .pri-normal { background:#d1fae5; color:#065f46; }
-
-    .stat-disetujui { background:#ecfdf5; color:#065f46; padding:.25rem .5rem; border-radius:.375rem; font-weight:600 }
-    .stat-draft     { background:#fff7ed; color:#92400e; padding:.25rem .5rem; border-radius:.375rem; font-weight:600 }
 </style>
 @endpush
 

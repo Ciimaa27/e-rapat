@@ -120,6 +120,14 @@ Route::middleware(['auth', 'role:notulis'])
         Route::post('/notulen/buat/{rapat}', [NotulisNotulenController::class, 'store'])
             ->name('notulen.store');
 
+        // RAPAT
+        Route::get('/rapat', [RapatController::class, 'index'])
+            ->name('rapat.index');
+
+        Route::get('/rapat/{id}', [RapatController::class, 'show'])
+            ->name('rapat.show');
+
+
       // TRANSKRIP
         Route::get('/transkrip/buat/{rapat}', [TranskripController::class, 'create'])
             ->name('transkrip.create');          // tampil halaman form

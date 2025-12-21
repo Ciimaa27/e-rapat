@@ -181,6 +181,7 @@
         </div>
     </div>
 </div>
+
     <div class="border-2 border-gray-200 rounded-lg overflow-hidden overflow-x-auto">
         <table role="table" aria-label="Daftar Rapat" class="min-w-full divide-y divide-gray-200 text-sm table-divider">
             <thead class="bg-pink-custom">
