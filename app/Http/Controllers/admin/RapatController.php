@@ -127,4 +127,64 @@ public function filter(Request $request)
 
         return view('pages.admin.rapat.show', compact('rapat'));
     }
+
+    /**
+     * EDIT RAPAT
+     */
+    public function edit($id)
+    {
+        $rapat = Rapat::with(['peserta', 'notulis'])->findOrFail($id);
+        $notulisList = User::where('role', 'notulis')->orderBy('name')->get();
+        $pegawaiList = User::where('role', 'pegawai')->orderBy('name')->get();
+
+        return view('pages.admin.rapat.edit-rapat', compact('rapat', 'notulisList', 'pegawaiList'));
+    }
+
+    /**
+     * UPDATE RAPAT
+     */
+    public function update(Request $request, $id)
+    {
+        $rapat = Rapat::findOrFail($id);
+
+        $validated = $request->validate([
+            'judul_rapat'   => 'required|string|max:255',
+            'tanggal'       => 'required|date',
+            'jam'           => 'required',
+            'ruangan'       => 'required|string|max:255',
+            'notulis_id'    => 'required|exists:users,id',
+            'prioritas'     => 'required|string',
+            'status'        => 'required|string',
+            'peserta_ids'   => 'array',
+            'peserta_ids.*' => 'exists:users,id',
+        ]);
+
+        $pesertaIds = $validated['peserta_ids'] ?? [];
+        unset($validated['peserta_ids']);
+
+        $rapat->update($validated);
+
+        if (!empty($pesertaIds)) {
+            $rapat->peserta()->sync($pesertaIds);
+        }
+
+        return redirect()
+            ->route('rapat.index')
+            ->with('success', 'Rapat berhasil diperbarui.');
+    }
+
+    /**
+     * DELETE RAPAT
+     */
+    public function destroy($id)
+    {
+        $rapat = Rapat::findOrFail($id);
+        $rapat->delete();
+
+        return redirect()
+            ->route('rapat.index')
+            ->with('success', 'Rapat berhasil dihapus.');
+    }
 }
+
+

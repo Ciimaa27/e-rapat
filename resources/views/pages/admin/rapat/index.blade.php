@@ -191,7 +191,7 @@
             </td>
 
             <td class="px-4 md:px-6 py-4 whitespace-nowrap">
-                {{ $rapat->jam }}
+                {{ $rapat->jam_formatted }}
             </td>
 
             <td class="px-4 md:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
@@ -211,10 +211,24 @@
             </td>
 
             <td class="px-4 md:px-6 py-4 whitespace-nowrap">
-                <a class="text-blue-600 font-semibold hover:underline transition"
-                   href="{{ route('rapat.show', $rapat->id) }}">
-                    Lihat Detail
-                </a>
+                <div class="flex items-center gap-2">
+                    <a class="text-blue-600 font-semibold hover:underline transition"
+                       href="{{ route('rapat.show', $rapat->id) }}">
+                        Lihat
+                    </a>
+                    <a class="text-green-600 font-semibold hover:underline transition"
+                       href="{{ route('rapat.edit', $rapat->id) }}">
+                        Edit
+                    </a>
+                    <form action="{{ route('rapat.destroy', $rapat->id) }}" method="POST" class="inline"
+                          onsubmit="return confirm('Yakin ingin menghapus rapat ini?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-600 font-semibold hover:underline transition">
+                            Hapus
+                        </button>
+                    </form>
+                </div>
             </td>
         </tr>
     @empty

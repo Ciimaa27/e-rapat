@@ -218,8 +218,8 @@
                             </span>
                         </td>
                         <td class="px-4 md:px-6 py-4 whitespace-nowrap flex flex-col gap-1">
-                            <a href="{{ route('notulis.agenda.show', $item->id) }}" class="text-blue-600 font-semibold hover:underline transition">
-                                Lihat Detail
+                            <a href="{{ route('notulis.transkrip.create', $item->id) }}" class="text-emerald-700 font-semibold hover:underline transition">
+                                Transkrip Audio
                             </a>
                             <a href="{{ route('notulis.notulen.create', $item->id) }}" class="text-green-600 font-semibold hover:underline transition">
                                 Buat Notulen
@@ -238,3 +238,36 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script>
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+
+    if (btn && dropdown) {
+        // Toggle show / hide
+        btn.addEventListener('click', () => {
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Klik di luar dropdown → tutup
+        document.addEventListener('click', function(e) {
+            if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    }
+
+    // KONFIRMASI LOGOUT
+    const logoutBtn  = document.getElementById('logoutBtn');
+    const logoutForm = document.getElementById('logout-form');
+
+    if (logoutBtn && logoutForm) {
+        logoutBtn.addEventListener('click', function () {
+            if (confirm('Yakin ingin keluar dari aplikasi?')) {
+                logoutForm.submit();
+            }
+        });
+    }
+</script>
+@endpush

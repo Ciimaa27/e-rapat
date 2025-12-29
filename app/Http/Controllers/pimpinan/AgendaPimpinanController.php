@@ -33,7 +33,7 @@ class AgendaPimpinanController extends Controller
     public function updateStatus(Request $request, $id)
 {
     $request->validate([
-        'status' => 'required|in:Menunggu,Terjadwal,Ditunda',
+        'status' => 'required|in:Menunggu,Direview,Disetujui',
     ]);
 
     $rapat = Rapat::findOrFail($id);

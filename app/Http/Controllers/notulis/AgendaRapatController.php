@@ -11,13 +11,15 @@ class AgendaRapatController extends Controller
     public function index()
     {
         $rapats = Rapat::where('notulis_id', Auth::id())
-            ->whereIn('status', ['Terjadwal']) // 🔥 STATUS DISAMAKAN
+            ->whereIn('status', ['Menunggu', 'Direview', 'Disetujui'])
             ->orderBy('tanggal', 'asc')
             ->orderBy('jam', 'asc')
+            ->orderBy('created_at', 'asc')
             ->get();
 
         return view('pages.notulis.notulen.index', compact('rapats'));
     }
+
 
     public function show($id)
     {

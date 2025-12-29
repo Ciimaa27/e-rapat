@@ -26,6 +26,7 @@
            {{
                 request()->routeIs('notulis.agenda.*')
                 || request()->routeIs('notulis.notulen.create')
+                || request()->routeIs('notulis.transkrip.*')
                 ? 'bg-white/40'
                 : 'hover:bg-white/50'
            }}">

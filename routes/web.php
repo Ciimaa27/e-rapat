@@ -69,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/rapat/search', [RapatController::class, 'search'])->name('rapat.search');
     Route::get('/rapat/filter', [RapatController::class, 'filter'])->name('rapat.filter');
     Route::get('/rapat/{id}', [RapatController::class, 'show'])->name('rapat.show');
+    Route::get('/rapat/{id}/edit', [RapatController::class, 'edit'])->name('rapat.edit');
+    Route::put('/rapat/{id}', [RapatController::class, 'update'])->name('rapat.update');
+    Route::delete('/rapat/{id}', [RapatController::class, 'destroy'])->name('rapat.destroy');
 
     // =====================
     // ADMIN - NOTULEN

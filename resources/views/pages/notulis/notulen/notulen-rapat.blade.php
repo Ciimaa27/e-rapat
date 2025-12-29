@@ -183,12 +183,6 @@
                                 class="text-blue-600 font-semibold hover:underline">
                                     Lihat Detail
                                 </a>
-
-                            {{-- Transkrip audio --}}
-                            <a href="{{ route('notulis.transkrip.create', $notulen->rapat_id) }}"
-                                class="text-emerald-700 font-semibold hover:underline">
-                                    Transkrip Audio
-                            </a>
                             </td>                   
                     @empty
                         <tr>

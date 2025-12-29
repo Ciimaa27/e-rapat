@@ -75,7 +75,7 @@
             <div class="md:col-span-3">
                 <input
                     type="time"
-                    value="{{ $rapat->jam }}"
+                    value="{{ \Carbon\Carbon::createFromFormat('H:i:s', $rapat->jam)->format('H:i') }}"
                     readonly
                     class="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"
                 >

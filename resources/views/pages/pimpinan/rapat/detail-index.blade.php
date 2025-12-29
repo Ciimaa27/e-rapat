@@ -99,8 +99,8 @@
 
             <select name="status" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
                 <option value="Menunggu"   {{ $rapat->status == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
-                <option value="Terjadwal"  {{ $rapat->status == 'Terjadwal' ? 'selected' : '' }}>Terjadwal</option>
-                <option value="Ditunda"    {{ $rapat->status == 'Ditunda' ? 'selected' : '' }}>Ditunda</option>
+                <option value="Terjadwal"  {{ $rapat->status == 'Direview' ? 'selected' : '' }}>Direview</option>
+                <option value="Ditunda"    {{ $rapat->status == 'Disetujui' ? 'selected' : '' }}>disetujui</option>
             </select>
 
 

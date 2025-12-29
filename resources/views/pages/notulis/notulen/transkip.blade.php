@@ -89,9 +89,9 @@
     {{-- TOMBOL KEMBALI DI POJOK KIRI BAWAH --}}
     {{-- ====================================== --}}
     <div class="mt-6 flex justify-start">
-        <a href="{{ route('notulis.notulen.index') }}"
-           class="px-6 py-2 bg-gray-300 text-gray-800 rounded-md text-sm font-semibold hover:bg-gray-400 transition">
-            ⬅ Kembali
+        <a href="{{ route('notulis.agenda.index') }}"
+           class="px-4 py-2 rounded bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition">
+            Kembali
         </a>
     </div>
 

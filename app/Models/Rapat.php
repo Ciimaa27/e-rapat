@@ -24,6 +24,15 @@ class Rapat extends Model
         'dibuat_oleh',
     ];
 
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    public function getJamFormattedAttribute()
+    {
+        return \Carbon\Carbon::parse($this->jam)->format('H:i');
+    }
+
     // Rapat punya satu notulen
     public function notulen()
     {
